@@ -11,6 +11,8 @@ console.log(typefaceFont)
 // Debug
 const gui = new GUI()
 
+//gui
+
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
 
@@ -36,9 +38,10 @@ const textureLoader = new THREE.TextureLoader()
 const matcapTexture = textureLoader.load('/textures/matcaps/3.png');
 //Textures used as map and matcap are supposed to be encoded in sRGB.
 // we need to specify it by setting their colorSpace to THREE.SRGBColorSpace:
-matcapTexture.colorSpace = THREE.SRGBColorSpace
+matcapTexture.colorSpace = THREE.SRGBColorSpace;
 //console.log(matcapTexture)
-
+// const textTexture = textureLoader.loader('/textures/matcaps/8.png');
+// textTexture.colorSpace = THREE.SRGBColorSpace;
 /**
  * Fonts
  */
@@ -81,6 +84,8 @@ fontLoader.load(
 
         const material = new THREE.MeshMatcapMaterial();
         material.matcap = matcapTexture;
+        material.transparent = true;
+        material.opacity= 0.7;
         //textMaterial.wireframe = true;
 
         const text = new THREE.Mesh(textGeometry, material);
